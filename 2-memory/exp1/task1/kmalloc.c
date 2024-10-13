@@ -9,14 +9,26 @@ unsigned char *kmallocmem2;
 static int __init mem_module_init(void)
 {
 	printk("Start kmalloc!\n");
-	kmallocmem1 = (unsigned char*)kmalloc(1024, GFP_KERNEL);
-	if (kmallocmem1 != NULL){
+	kmallocmem1 = (unsigned char *)kmalloc(1024, GFP_KERNEL);
+	if (kmallocmem1 != NULL)
+	{
 		printk(KERN_ALERT "kmallocmem1 addr = %lx\n", (unsigned long)kmallocmem1);
-	}else{
+	}
+	else
+	{
 		printk("Failed to allocate kmallocmem1!\n");
 	}
-	//请按实验指导书要求补充完整 kmallocmem2 的申请语句
-	// 
+	// 请按实验指导书要求补充完整 kmallocmem2 的申请语句
+	//
+	kmallocmem2 = (unsigned char *)kmalloc(8 * 1024, GFP_KERNEL);
+	if (kmallocmem2 != NULL)
+	{
+		printk(KERN_ALERT "kmallocmem2 addr = %lx\n", (unsigned long)kmallocmem2);
+	}
+	else
+	{
+		printk("Failed to allocate kmallocmem2!\n");
+	}
 	return 0;
 }
 

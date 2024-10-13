@@ -4,4 +4,4 @@ PWD := $(shell pwd)
 all:
 	make -C $(KDIR) M=$(PWD) modules
 clean:
-	rm *.o *.ko *.mod *.mod.c Module.symvers modules.order -f
+	sudo rm -rf *.o *.ko *.mod *.mod.c .*.ko.cmd .*.mod.o.cmd .*.o.cmd Module.symvers modules.order ./.tmp_versions 

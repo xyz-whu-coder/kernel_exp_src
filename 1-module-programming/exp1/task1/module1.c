@@ -9,6 +9,7 @@ static int __init hello_init(void){
 
 static void __exit hello_exit(void){ 
 	//补充：打印指定语句
+	printk(KERN_INFO "Hi, Module1 is removed.\n");
 }
 module_init(hello_init);
 module_exit(hello_exit);

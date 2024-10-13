@@ -1,0 +1,108 @@
+rm -rf *.o *.ko *.mod *.mod.c .*.ko.cmd .*.mod.o.cmd .*.o.cmd Module.symvers modules.order ./.tmp_versions 
+make -C /lib/modules/4.19.90-2003.4.0.0036.oe1.aarch64/build  M=/home/openeuler/kernel_exp_src/1-module-programming/exp1/task1 modules
+make[1]: Entering directory '/usr/src/kernels/4.19.90-2003.4.0.0036.oe1.aarch64'
+  CC [M]  /home/openeuler/kernel_exp_src/1-module-programming/exp1/task1/module1.o
+  CC [M]  /home/openeuler/kernel_exp_src/1-module-programming/exp1/task1/module2.o
+  CC [M]  /home/openeuler/kernel_exp_src/1-module-programming/exp1/task1/module3.o
+  CC [M]  /home/openeuler/kernel_exp_src/1-module-programming/exp1/task1/module4.o
+  Building modules, stage 2.
+  MODPOST 4 modules
+  CC      /home/openeuler/kernel_exp_src/1-module-programming/exp1/task1/module1.mod.o
+  LD [M]  /home/openeuler/kernel_exp_src/1-module-programming/exp1/task1/module1.ko
+  CC      /home/openeuler/kernel_exp_src/1-module-programming/exp1/task1/module2.mod.o
+  LD [M]  /home/openeuler/kernel_exp_src/1-module-programming/exp1/task1/module2.ko
+  CC      /home/openeuler/kernel_exp_src/1-module-programming/exp1/task1/module3.mod.o
+  LD [M]  /home/openeuler/kernel_exp_src/1-module-programming/exp1/task1/module3.ko
+  CC      /home/openeuler/kernel_exp_src/1-module-programming/exp1/task1/module4.mod.o
+  LD [M]  /home/openeuler/kernel_exp_src/1-module-programming/exp1/task1/module4.ko
+make[1]: Leaving directory '/usr/src/kernels/4.19.90-2003.4.0.0036.oe1.aarch64'
+module4               262144  0
+module3               262144  0
+module2               262144  0
+module1               262144  0
+This is a proc message!!
+This is proc message from module4
+str is (null)
+This is proc message from module4
+str is nice
+
+[H[2J[3J[  141.252223] x3 : ffff8003ffec23c0 x2 : 0000000000000007 
+[  141.252224] x1 : 3cf5f439b0b7fa00 x0 : 0000000000000000 
+[  141.252226] Call trace:
+[  141.252227]  remove_proc_entry+0x168/0x1d0
+[  141.252230]  hello_exit+0x18/0xfdd8 [module4]
+[  141.252236]  __arm64_sys_delete_module+0x1a4/0x2b8
+[  141.252239]  el0_svc_common+0x78/0x130
+[  141.252240]  el0_svc_handler+0x38/0x78
+[  141.252242]  el0_svc+0x8/0xc
+[  141.252243] ---[ end trace 9fd7697922a2d468 ]---
+[  141.252245] ------------[ cut here ]------------
+[  141.252247] remove_proc_entry: removing non-empty directory '/proc/hello_dir', leaking at least 'hello'
+[  141.252252] WARNING: CPU: 5 PID: 4472 at fs/proc/generic.c:683 remove_proc_entry+0x1bc/0x1d0
+[  141.252252] Modules linked in: module4(OE-) module3(OE) module2(OE) module1(OE) aes_ce_blk crypto_simd cryptd aes_ce_cipher ghash_ce sha2_ce sha256_arm64 sha1_ce sg virtio_net net_failover failover rfkill virtio_balloon vfat fat sch_fq_codel ip_tables ext4 mbcache jbd2 sr_mod cdrom sd_mod virtio_gpu virtio_console virtio_scsi virtio_pci virtio_mmio virtio_ring virtio dm_mirror dm_region_hash dm_log dm_mod
+[  141.252263] CPU: 5 PID: 4472 Comm: rmmod Kdump: loaded Tainted: G        W  OE     4.19.90-2003.4.0.0036.oe1.aarch64 #1
+[  141.252263] Hardware name: QEMU KVM Virtual Machine, BIOS 0.0.0 02/06/2015
+[  141.252264] pstate: 40400005 (nZcv daif +PAN -UAO)
+[  141.252266] pc : remove_proc_entry+0x1bc/0x1d0
+[  141.252267] lr : remove_proc_entry+0x1bc/0x1d0
+[  141.252268] sp : ffff000025bcfd60
+[  141.252268] x29: ffff000025bcfd60 x28: ffff8003c4e89b00 
+[  141.252270] x27: 0000000000000000 x26: 0000000000000000 
+[  141.252271] x25: 0000000056000000 x24: ffff0000092b9000 
+[  141.252272] x23: ffff0000092f2fa8 x22: ffff8003d2c6f76b 
+[  141.252273] x21: ffff8003d2c6f6c0 x20: ffff000009273000 
+[  141.252274] x19: ffff000008ce5038 x18: 0000000000000000 
+[  141.252275] x17: 0000000000000000 x16: 0000000000000000 
+[  141.252276] x15: 0000000000000000 x14: 7269645f6f6c6c65 
+[  141.252277] x13: 682f636f72702f27 x12: 2079726f74636572 
+[  141.252278] x11: 6964207974706d65 x10: 2d6e6f6e20676e69 
+[  141.252279] x9 : 0000000000000000 x8 : 0000000000000004 
+[  141.252280] x7 : ffff00000947a1c0 x6 : 0000000000000486 
+[  141.252281] x5 : 0000000000000001 x4 : ffff8003ffec23c0 
+[  141.252282] x3 : ffff8003ffec23c0 x2 : 0000000000000007 
+[  141.252283] x1 : 3cf5f439b0b7fa00 x0 : 0000000000000000 
+[  141.252284] Call trace:
+[  141.252285]  remove_proc_entry+0x1bc/0x1d0
+[  141.252287]  hello_exit+0x28/0xfdd8 [module4]
+[  141.252289]  __arm64_sys_delete_module+0x1a4/0x2b8
+[  141.252290]  el0_svc_common+0x78/0x130
+[  141.252291]  el0_svc_handler+0x38/0x78
+[  141.252292]  el0_svc+0x8/0xc
+[  141.252293] ---[ end trace 9fd7697922a2d469 ]---
+[  141.278100] module3 is removed!
+[  141.278102] ------------[ cut here ]------------
+[  141.278104] name '/proc/hello_proc'
+[  141.278116] WARNING: CPU: 5 PID: 4474 at fs/proc/generic.c:175 __xlate_proc_name+0xb0/0xd0
+[  141.278117] Modules linked in: module3(OE-) module2(OE) module1(OE) aes_ce_blk crypto_simd cryptd aes_ce_cipher ghash_ce sha2_ce sha256_arm64 sha1_ce sg virtio_net net_failover failover rfkill virtio_balloon vfat fat sch_fq_codel ip_tables ext4 mbcache jbd2 sr_mod cdrom sd_mod virtio_gpu virtio_console virtio_scsi virtio_pci virtio_mmio virtio_ring virtio dm_mirror dm_region_hash dm_log dm_mod [last unloaded: module4]
+[  141.278139] CPU: 5 PID: 4474 Comm: rmmod Kdump: loaded Tainted: G        W  OE     4.19.90-2003.4.0.0036.oe1.aarch64 #1
+[  141.278140] Hardware name: QEMU KVM Virtual Machine, BIOS 0.0.0 02/06/2015
+[  141.278141] pstate: 40400005 (nZcv daif +PAN -UAO)
+[  141.278143] pc : __xlate_proc_name+0xb0/0xd0
+[  141.278144] lr : __xlate_proc_name+0xb0/0xd0
+[  141.278145] sp : ffff00002550fd20
+[  141.278145] x29: ffff00002550fd20 x28: ffff8003c4e96480 
+[  141.278147] x27: 0000000000000000 x26: 0000000000000000 
+[  141.278148] x25: 0000000056000000 x24: ffff00002550fdb0 
+[  141.278149] x23: ffff000000f901a8 x22: ffff00002550fda8 
+[  141.278150] x21: 0000000000000000 x20: 0000000000000000 
+[  141.278151] x19: ffff000000f901a8 x18: 0000000000000000 
+[  141.278152] x17: 0000000000000000 x16: 0000000000000000 
+[  141.278153] x15: 0000000000000000 x14: 0000000000000000 
+[  141.278154] x13: ff00000000000000 x12: ffff00000929d000 
+[  141.278155] x11: 0000000000000000 x10: ffff00000947a000 
+[  141.278156] x9 : 0000000000000000 x8 : 0000000000000004 
+[  141.278157] x7 : ffff00000947a1c0 x6 : 00000000000004a8 
+[  141.278158] x5 : 0000000000000001 x4 : ffff8003ffec23c0 
+[  141.278159] x3 : ffff8003ffec23c0 x2 : 0000000000000007 
+[  141.278160] x1 : 3cf5f439b0b7fa00 x0 : 0000000000000000 
+[  141.278162] Call trace:
+[  141.278163]  __xlate_proc_name+0xb0/0xd0
+[  141.278165]  remove_proc_entry+0x68/0x1d0
+[  141.278168]  hello_proc_exit+0x28/0xff90 [module3]
+[  141.278171]  __arm64_sys_delete_module+0x1a4/0x2b8
+[  141.278174]  el0_svc_common+0x78/0x130
+[  141.278176]  el0_svc_handler+0x38/0x78
+[  141.278177]  el0_svc+0x8/0xc
+[  141.278178] ---[ end trace 9fd7697922a2d46a ]---
+[  141.305741] Module2 is removed!
+[  141.321898] Hi, Module1 is removed.

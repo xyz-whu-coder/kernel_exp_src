@@ -12,4 +12,4 @@ uninstall:
 	rmmod proc_parser
 .PHONY:clean
 clean:
-	-rm *.mod.c *.o *.order *.symvers *.ko
+	sudo rm -rf *.mod.c *.o *.order *.symvers *.ko .proc_parser.mod.o.cmd .proc_parser.ko.cmd  .proc_parser.o.cmd .tmp_versions

@@ -8,5 +8,5 @@ default:
 endif
 .PHONY:clean
 clean:
-	-rm *.mod.c *.o *.order *.symvers *.ko
+	rm -rf *.mod.c *.o *.order *.symvers *.ko .*.ko.cmd .*.mod.o.cmd .*.o.cmd .tmp_versions/
 

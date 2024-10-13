@@ -23,6 +23,12 @@ static int __init mem_module_init(void)
 		printk("Failed to allocate vmallocmem2!\n");
 	}
 	//请按实验指导书要求补充完整
+	vmallocmem3 = (unsigned char*)vmalloc(1048576 * 64);
+	if (vmallocmem3 != NULL){
+		printk("vmallocmem3 addr = %lx\n", (unsigned long)vmallocmem3);
+	}else{
+		printk("Failed to allocate vmallocmem3!\n");
+	}
 	return 0;
 }
 
