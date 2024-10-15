@@ -8,4 +8,4 @@ default:
 endif
 .PHONY:clean
 clean:
-	-rm *.mod.c *.o *.order *.symvers *.ko
+	sudo rm -rf *.mod.c *.o *.order *.symvers *.ko .tasklet_interrupt.ko.cmd .tasklet_interrupt.mod.o.cmd .tasklet_interrupt.o.cmd .tmp_versions

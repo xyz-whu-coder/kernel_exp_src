@@ -17,11 +17,11 @@ __section("prog") int drop_tcp(struct xdp_md *ctx)
     if (ip->protocol == IPPROTO_TCP)
     {
         //请增加这里的代码，丢弃TCP数据包
-
+        return XDP_DROP
     }
 
     //请增加这里的代码，除了TCP数据包外，都放行
-
+    return XDP_PASS;
 
 }
 

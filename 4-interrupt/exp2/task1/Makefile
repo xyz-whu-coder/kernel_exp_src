@@ -7,4 +7,4 @@ all:
 	$(MAKE) -C $(LINUX_PATH) M=$(CURRENT_PATH) modules
 
 clean:
-	rm *.mod.c *.o *.order *.symvers *.ko
+	sudo rm -rf *.mod.c *.o *.order *.symvers *.ko .*.ko.cmd .*.mod.o.cmd .*.o.cmd .*.o.d .tmp_versions/
